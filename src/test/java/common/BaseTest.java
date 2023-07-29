@@ -1,13 +1,11 @@
-package Common;
+package common;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.poi.ss.formula.atp.Switch;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.BeforeMethod;
-import org.testng.log4testng.Logger;
 
 import java.util.concurrent.TimeUnit;
 
@@ -17,7 +15,7 @@ public class BaseTest {
         return driver;
     }
 
-    public void setDriver(String browserType, String appURL){
+    public WebDriver setDriver(String browserType, String appURL){
         switch (browserType){
             case "chrome":{
                 this.driver = initChromeDriver(appURL);
@@ -34,6 +32,7 @@ public class BaseTest {
             default:
                 this.driver = initChromeDriver(appURL);
         }
+        return this.driver;
     }
 
     private static WebDriver initChromeDriver(String appURL){
